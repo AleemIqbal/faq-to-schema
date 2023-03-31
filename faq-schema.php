@@ -40,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
 
-    $json_ld_output = json_encode($json_ld, JSON_PRETTY_PRINT);
+    $json_ld_output = str_replace(['"', "'"], '', json_encode($json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    $json_ld_output = str_replace("'", '', $json_ld_output);
 }
 ?>
 
@@ -87,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($json_ld_output)): ?>
             <h2 class="mt-5">JSON-LD Schema</h2>
             <button class="btn btn-secondary" onclick="copyToClipboard()">Copy to Clipboard</button>
-            <pre id="json_ld_output"><?php echo htmlspecialchars($json_ld_output); ?></pre>
+            <pre id="json_ld_output"><?php echo stripslashes($json_ld_output); ?></pre>
            
         <?php endif; ?>
     </div>
