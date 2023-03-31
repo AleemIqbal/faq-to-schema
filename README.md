@@ -1,4 +1,4 @@
-<h1>FAQ JSON-LD Generator</h1>
+<h1>FAQ to JSON-LD Generator</h1>
     <p>This is a simple PHP script that generates a JSON-LD schema for a list of Frequently Asked Questions (FAQs).</p>
     <h2>Usage</h2>
     <ol>
