@@ -29,19 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'mainEntity' => [],
     ];
 
-    foreach ($faqs as $faq) {
-        $json_ld['mainEntity'][] = [
-            '@type' => 'Question',
-            'name' => $faq['question'],
-            'acceptedAnswer' => [
-                '@type' => 'Answer',
-                'text' => $faq['answer'],
-            ],
-        ];
-    }
+foreach ($faqs as $faq) {
+    $json_ld['mainEntity'][] = [
+        '@type' => 'Question',
+        'name' => str_replace(['"', "'"], '', $faq['question']),
+        'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => str_replace(['"', "'"], '', $faq['answer']),
+        ],
+    ];
+}
+    $json_ld_output = json_encode($json_ld, JSON_PRETTY_PRINT);
 
-    $json_ld_output = str_replace(['"', "'"], '', json_encode($json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-    $json_ld_output = str_replace("'", '', $json_ld_output);
 }
 ?>
 
