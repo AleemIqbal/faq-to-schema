@@ -39,7 +39,7 @@ foreach ($faqs as $faq) {
         ],
     ];
 }
-    $json_ld_output = json_encode($json_ld, JSON_PRETTY_PRINT);
+    $json_ld_output = json_encode($json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 }
 ?>
